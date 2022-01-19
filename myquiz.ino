@@ -4,7 +4,7 @@
 #include <Elegoo_TFTLCD.h>
 #include <TouchScreen.h>
 
-//PINS
+// PINS
 #define LCD_CS A3
 #define LCD_CD A2
 #define LCD_WR A1
@@ -18,23 +18,23 @@
 #define XM A2
 #define YM 9
 #define XP 8
-//COLORI
-#define  BLACK     0x0000
-#define RED       0xF800
-#define GREEN     0x07E0
-#define YELLOW    0xFFE0
-#define WHITE     0xFFFF
-#define BLUE      0x04B3
-#define ORANGE    0xFD20
-#define GREY      0xB552
-#define GREEN2    0xAFE5
+// COLORI
+#define BLACK 0x0000
+#define RED 0xF800
+#define GREEN 0x07E0
+#define YELLOW 0xFFE0
+#define WHITE 0xFFFF
+#define BLUE 0x979D
+#define ORANGE 0xFD20
+#define GREY 0x428C
+#define GREEN2 0xAFE5
 
-//INIZIALIZZAZIONE LIBRERIE
+// INIZIALIZZAZIONE LIBRERIE
 Elegoo_TFTLCD tft(LCD_CS, LCD_CD, LCD_WR, LCD_RD, LCD_RESET);
 TouchScreen ts = TouchScreen(XP, YP, XM, YM, 364);
 
-//VARIABILI
-//var. pulsante
+// VARIABILI
+// var. pulsante
 boolean buttonState = true;
 boolean buttonStateP1 = false;
 boolean buttonStateP2 = false;
@@ -60,9 +60,11 @@ boolean buttonStateP21 = false;
 boolean buttonStateP22 = false;
 boolean buttonStateP23 = false;
 boolean buttonStateP24 = false;
-//numero pagina
+boolean buttonStateP25 = false;
+boolean buttonStateP26 = false;
+// numero pagina
 int numPage = 0;
-//contatori
+// contatori
 int x = 0;
 int y = 0;
 int z = 0;
@@ -71,8 +73,21 @@ int b = 0;
 int points = 0;
 int ard_points = 0;
 
-//DOMANDE SPAZIO
-void question1() {
+int ds1 = 0;
+int ds2 = 0;
+int ds3 = 0;
+int ds4 = 0;
+int ds5 = 0;
+int ds6 = 0;
+int ds7 = 0;
+
+int da1 = 0;
+int da2 = 0;
+int da3 = 0;
+
+// DOMANDE SPAZIO
+void question1()
+{
   tft.fillScreen(BLACK);
   tft.drawRect(0, 0, 320, 240, RED);
   tft.setCursor(10, 10);
@@ -100,7 +115,8 @@ void question1() {
   a = 0;
 }
 
-void question2() {
+void question2()
+{
   tft.fillScreen(BLACK);
   tft.drawRect(0, 0, 320, 240, RED);
   tft.setCursor(10, 10);
@@ -124,7 +140,8 @@ void question2() {
   a = 1;
 }
 
-void question3() {
+void question3()
+{
   tft.fillScreen(BLACK);
   tft.drawRect(0, 0, 320, 240, RED);
   tft.setCursor(10, 10);
@@ -147,7 +164,8 @@ void question3() {
   numPage = numPage + 1;
 }
 
-void question4() {
+void question4()
+{
   tft.fillScreen(BLACK);
   tft.drawRect(0, 0, 320, 240, RED);
   tft.setCursor(10, 10);
@@ -170,13 +188,14 @@ void question4() {
   numPage = numPage + 1;
 }
 
-void question5() {
+void question5()
+{
   tft.fillScreen(BLACK);
   tft.drawRect(0, 0, 320, 240, RED);
   tft.setCursor(10, 10);
   tft.setTextColor(WHITE);
   tft.setTextSize(3);
-  tft.print("Quali sono dei\n\n pianeti Nani?");
+  tft.print("Quali sono dei\n\n pianeti nani?");
 
   tft.fillRect(30, 115, 260, 40, RED);
   tft.drawRect(30, 115, 260, 40, WHITE);
@@ -193,20 +212,21 @@ void question5() {
   numPage = numPage + 1;
 }
 
-void question6() {
+void question6()
+{
   tft.fillScreen(BLACK);
   tft.drawRect(0, 0, 320, 240, RED);
   tft.setCursor(10, 10);
   tft.setTextColor(WHITE);
   tft.setTextSize(3);
-  tft.print("Quante missioni\n\n sono state fatte\n sulla Luna?");
+  tft.print("Quante missioni\n\n sono sbarcate\n\n sulla Luna?");
 
   tft.fillRect(30, 170, 115, 40, RED);
   tft.drawRect(30, 170, 115, 40, WHITE);
   tft.setCursor(84, 182);
   tft.setTextColor(WHITE);
   tft.setTextSize(2);
-  tft.print("5");
+  tft.print("7");
   tft.fillRect(175, 170, 115, 40, RED);
   tft.drawRect(175, 170, 115, 40, WHITE);
   tft.setCursor(224, 182);
@@ -216,13 +236,14 @@ void question6() {
   numPage = numPage + 1;
 }
 
-void question7() {
+void question7()
+{
   tft.fillScreen(BLACK);
   tft.drawRect(0, 0, 320, 240, RED);
   tft.setCursor(10, 10);
   tft.setTextColor(WHITE);
   tft.setTextSize(3);
-  tft.print(String("Qual'") + String((char)130) + String(" stata l'\n\n ultima missione\n\n Apollo?"));
+  tft.print(String("Qual ") + String((char)130) + String(" stata l'\n\n ultima missione\n\n Apollo?"));
 
   tft.fillRect(30, 170, 115, 40, RED);
   tft.drawRect(30, 170, 115, 40, WHITE);
@@ -239,9 +260,9 @@ void question7() {
   numPage = numPage + 1;
 }
 
-
-//RISPOSTE
-void ans_true() {
+// RISPOSTE
+void ans_true()
+{
   tft.fillScreen(BLACK);
   tft.drawRect(0, 0, 320, 240, RED);
   tft.setCursor(100, 100);
@@ -253,7 +274,8 @@ void ans_true() {
   points = points + 1;
 }
 
-void ans_false() {
+void ans_false()
+{
   tft.fillScreen(BLACK);
   tft.drawRect(0, 0, 320, 240, RED);
   tft.setCursor(100, 80);
@@ -264,15 +286,15 @@ void ans_false() {
   numPage = numPage + 1;
 }
 
-//DOMANDE ARDUINO
-void ard_question1() {
+// DOMANDE ARDUINO
+void ard_question1()
+{
   tft.fillScreen(WHITE);
   tft.fillRect(0, 0, 320, 40, BLUE);
   tft.setCursor(10, 10);
   tft.setTextColor(WHITE);
   tft.setTextSize(3);
   tft.print(String("Cos'") + String((char)130) + String(" Arduino?"));
-
 
   tft.fillRect(30, 66, 260, 60, ORANGE);
   tft.setCursor(50, 79);
@@ -300,14 +322,14 @@ void ard_question1() {
   a = 0;
 }
 
-void ard_question1_s() {
+void ard_question1_s()
+{
   tft.fillScreen(WHITE);
   tft.fillRect(0, 0, 320, 40, BLUE);
   tft.setCursor(10, 10);
   tft.setTextColor(WHITE);
   tft.setTextSize(3);
   tft.print(String("Cos'") + String((char)130) + String(" Arduino?"));
-
 
   tft.fillRect(30, 66, 260, 60, ORANGE);
   tft.setCursor(50, 79);
@@ -334,14 +356,14 @@ void ard_question1_s() {
   a = 0;
 }
 
-void ard_question2() {
+void ard_question2()
+{
   tft.fillScreen(WHITE);
   tft.fillRect(0, 0, 320, 90, BLUE);
   tft.setCursor(10, 10);
   tft.setTextColor(WHITE);
   tft.setTextSize(3);
   tft.print(String("Arduino ") + String((char)130) + String(" stato\n\n inventato da un:"));
-
 
   tft.fillRect(30, 115, 260, 40, ORANGE);
   tft.setCursor(105, 129);
@@ -357,14 +379,14 @@ void ard_question2() {
   a = 1;
 }
 
-void ard_question3() {
+void ard_question3()
+{
   tft.fillScreen(WHITE);
   tft.fillRect(0, 0, 320, 90, BLUE);
   tft.setCursor(10, 10);
   tft.setTextColor(WHITE);
   tft.setTextSize(3);
   tft.print(String("Arduino ") + String((char)130) + String(" una\n\n piattaforma:"));
-
 
   tft.fillRect(30, 115, 260, 40, ORANGE);
   tft.setCursor(90, 129);
@@ -379,8 +401,9 @@ void ard_question3() {
   numPage = numPage + 1;
 }
 
-//RISPOSTE ARDUINO
-void ard_ans_true() {
+// RISPOSTE ARDUINO
+void ard_ans_true()
+{
   tft.fillScreen(WHITE);
   tft.drawRect(0, 0, 320, 240, ORANGE);
   tft.setCursor(100, 100);
@@ -390,10 +413,10 @@ void ard_ans_true() {
   x = 0;
   numPage = numPage + 1;
   ard_points = ard_points + 1;
-
 }
 
-void ard_ans_false() {
+void ard_ans_false()
+{
   tft.fillScreen(WHITE);
   tft.drawRect(0, 0, 320, 240, ORANGE);
   tft.setCursor(100, 80);
@@ -404,8 +427,9 @@ void ard_ans_false() {
   numPage = numPage + 1;
 }
 
-//PAGINA FINALE
-void final_page() {
+// PAGINA FINALE
+void final_page()
+{
   tft.fillScreen(BLACK);
   tft.drawRect(0, 0, 320, 240, RED);
   tft.setCursor(10, 10);
@@ -418,15 +442,21 @@ void final_page() {
   tft.setTextSize(3);
   tft.print("Punteggio:");
 
-  tft.setCursor(220, 70);
+  tft.setCursor(200, 70);
   tft.setTextColor(YELLOW);
   tft.setTextSize(3);
   tft.print(points);
 
-  tft.setCursor(240, 70);
+  tft.setCursor(220, 70);
   tft.setTextColor(WHITE);
   tft.setTextSize(3);
   tft.print("/7");
+
+  tft.drawRect(275, 70, 23, 23, RED);
+  tft.setCursor(282, 74);
+  tft.setTextColor(RED);
+  tft.setTextSize(2);
+  tft.print("R");
 
   tft.fillRect(30, 115, 260, 40, RED);
   tft.drawRect(30, 115, 260, 40, WHITE);
@@ -445,8 +475,9 @@ void final_page() {
   a = 0;
 }
 
-//PAGINA FINALE ARDUINO
-void ard_final_page() {
+// PAGINA FINALE ARDUINO
+void ard_final_page()
+{
   tft.fillScreen(WHITE);
   tft.fillRect(0, 0, 320, 50, BLUE);
   tft.setCursor(10, 10);
@@ -459,15 +490,21 @@ void ard_final_page() {
   tft.setTextSize(3);
   tft.print("Punteggio:");
 
-  tft.setCursor(220, 70);
+  tft.setCursor(200, 70);
   tft.setTextColor(ORANGE);
   tft.setTextSize(3);
   tft.print(ard_points);
 
-  tft.setCursor(240, 70);
+  tft.setCursor(220, 70);
   tft.setTextColor(BLACK);
   tft.setTextSize(3);
   tft.print("/3");
+
+  tft.drawRect(275, 70, 23, 23, ORANGE);
+  tft.setCursor(282, 74);
+  tft.setTextColor(ORANGE);
+  tft.setTextSize(2);
+  tft.print("R");
 
   tft.fillRect(30, 115, 260, 40, ORANGE);
   tft.setCursor(45, 129);
@@ -484,7 +521,8 @@ void ard_final_page() {
   a = 0;
 }
 
-void chose_page() {
+void chose_page()
+{
   tft.fillScreen(GREY);
   tft.drawRect(0, 0, 320, 240, WHITE);
   tft.drawRect(1, 1, 318, 238, WHITE);
@@ -515,7 +553,8 @@ void chose_page() {
   a = 0;
 }
 
-void logo() {
+void logo()
+{
   tft.fillScreen(GREY);
   tft.drawRect(0, 0, 320, 240, WHITE);
   tft.drawRect(1, 1, 318, 238, WHITE);
@@ -534,7 +573,222 @@ void logo() {
   tft.print("by Simone Trucci");
 }
 
-void setup(void) {
+void results()
+{
+  numPage = 25;
+  tft.fillScreen(BLACK);
+  tft.drawRect(0, 0, 320, 240, RED);
+
+  tft.setCursor(5, 5);
+  tft.setTextColor(YELLOW);
+  tft.setTextSize(2);
+  tft.print(String((char)17) + String("  RIEPILOGO RISPOSTE"));
+
+  tft.setCursor(10, 35);
+  tft.setTextColor(WHITE);
+  tft.setTextSize(2);
+  tft.print("Domanda 1");
+  if (ds1 == 1)
+  {
+    tft.setCursor(190, 35);
+    tft.setTextColor(GREEN);
+    tft.setTextSize(2);
+    tft.print("ESATTO");
+  }
+  else if (ds1 == 0)
+  {
+    tft.setCursor(190, 35);
+    tft.setTextColor(RED);
+    tft.setTextSize(2);
+    tft.print("ERRATO");
+  }
+
+  tft.setCursor(10, 65);
+  tft.setTextColor(WHITE);
+  tft.setTextSize(2);
+  tft.print("Domanda 2");
+  if (ds2 == 1)
+  {
+    tft.setCursor(190, 65);
+    tft.setTextColor(GREEN);
+    tft.setTextSize(2);
+    tft.print("ESATTO");
+  }
+  else if (ds2 == 0)
+  {
+    tft.setCursor(190, 65);
+    tft.setTextColor(RED);
+    tft.setTextSize(2);
+    tft.print("ERRATO");
+  }
+
+  tft.setCursor(10, 95);
+  tft.setTextColor(WHITE);
+  tft.setTextSize(2);
+  tft.print("Domanda 3");
+  if (ds3 == 1)
+  {
+    tft.setCursor(190, 95);
+    tft.setTextColor(GREEN);
+    tft.setTextSize(2);
+    tft.print("ESATTO");
+  }
+  else if (ds3 == 0)
+  {
+    tft.setCursor(190, 95);
+    tft.setTextColor(RED);
+    tft.setTextSize(2);
+    tft.print("ERRATO");
+  }
+
+  tft.setCursor(10, 125);
+  tft.setTextColor(WHITE);
+  tft.setTextSize(2);
+  tft.print("Domanda 4");
+  if (ds4 == 1)
+  {
+    tft.setCursor(190, 125);
+    tft.setTextColor(GREEN);
+    tft.setTextSize(2);
+    tft.print("ESATTO");
+  }
+  else if (ds4 == 0)
+  {
+    tft.setCursor(190, 125);
+    tft.setTextColor(RED);
+    tft.setTextSize(2);
+    tft.print("ERRATO");
+  }
+
+  tft.setCursor(10, 155);
+  tft.setTextColor(WHITE);
+  tft.setTextSize(2);
+  tft.print("Domanda 5");
+  if (ds5 == 1)
+  {
+    tft.setCursor(190, 155);
+    tft.setTextColor(GREEN);
+    tft.setTextSize(2);
+    tft.print("ESATTO");
+  }
+  else if (ds5 == 0)
+  {
+    tft.setCursor(190, 155);
+    tft.setTextColor(RED);
+    tft.setTextSize(2);
+    tft.print("ERRATO");
+  }
+
+  tft.setCursor(10, 185);
+  tft.setTextColor(WHITE);
+  tft.setTextSize(2);
+  tft.print("Domanda 6");
+  if (ds6 == 1)
+  {
+    tft.setCursor(190, 185);
+    tft.setTextColor(GREEN);
+    tft.setTextSize(2);
+    tft.print("ESATTO");
+  }
+  else if (ds6 == 0)
+  {
+    tft.setCursor(190, 185);
+    tft.setTextColor(RED);
+    tft.setTextSize(2);
+    tft.print("ERRATO");
+  }
+
+  tft.setCursor(10, 215);
+  tft.setTextColor(WHITE);
+  tft.setTextSize(2);
+  tft.print("Domanda 7");
+  if (ds7 == 1)
+  {
+    tft.setCursor(190, 215);
+    tft.setTextColor(GREEN);
+    tft.setTextSize(2);
+    tft.print("ESATTO");
+  }
+  else if (ds7 == 0)
+  {
+    tft.setCursor(190, 215);
+    tft.setTextColor(RED);
+    tft.setTextSize(2);
+    tft.print("ERRATO");
+  }
+}
+
+void ard_results()
+{
+  numPage = 26;
+  tft.fillScreen(WHITE);
+
+  tft.fillRect(0, 0, 320, 25, BLUE);
+  tft.setCursor(5, 5);
+  tft.setTextColor(WHITE);
+  tft.setTextSize(2);
+  tft.print(String((char)17) + String("  RIEPILOGO RISPOSTE"));
+
+  tft.setCursor(10, 35);
+  tft.setTextColor(BLACK);
+  tft.setTextSize(2);
+  tft.print("Domanda 1");
+  if (da1 == 1)
+  {
+    tft.setCursor(190, 35);
+    tft.setTextColor(GREEN);
+    tft.setTextSize(2);
+    tft.print("ESATTO");
+  }
+  else if (da1 == 0)
+  {
+    tft.setCursor(190, 35);
+    tft.setTextColor(RED);
+    tft.setTextSize(2);
+    tft.print("ERRATO");
+  }
+
+  tft.setCursor(10, 65);
+  tft.setTextColor(BLACK);
+  tft.setTextSize(2);
+  tft.print("Domanda 2");
+  if (da2 == 1)
+  {
+    tft.setCursor(190, 65);
+    tft.setTextColor(GREEN);
+    tft.setTextSize(2);
+    tft.print("ESATTO");
+  }
+  else if (da2 == 0)
+  {
+    tft.setCursor(190, 65);
+    tft.setTextColor(RED);
+    tft.setTextSize(2);
+    tft.print("ERRATO");
+  }
+
+  tft.setCursor(10, 95);
+  tft.setTextColor(BLACK);
+  tft.setTextSize(2);
+  tft.print("Domanda 3");
+  if (da3 == 1)
+  {
+    tft.setCursor(190, 95);
+    tft.setTextColor(GREEN);
+    tft.setTextSize(2);
+    tft.print("ESATTO");
+  }
+  else if (da3 == 0)
+  {
+    tft.setCursor(190, 95);
+    tft.setTextColor(RED);
+    tft.setTextSize(2);
+    tft.print("ERRATO");
+  }
+}
+
+void setup(void)
+{
   Serial.begin(9600);
   Serial.println(F("TFT LCD test"));
   Serial.print("TFT size is ");
@@ -544,15 +798,15 @@ void setup(void) {
 
   tft.reset();
   uint16_t identifier = tft.readID();
-  if(identifier==0x0101) {
-    identifier=0x9341;
+  if (identifier == 0x0101)
+  {
+    identifier = 0x9341;
     Serial.println(F("Found 0x9341 LCD driver"));
   }
   tft.begin(identifier);
 
   tft.setRotation(1);
   logo();
-
 
   numPage = 0;
   x = 0;
@@ -563,62 +817,69 @@ void setup(void) {
   ard_points = 0;
 }
 
-void loop(void) {
+void loop(void)
+{
   TSPoint p = ts.getPoint();
 
-  if (p.z > ts.pressureThreshhold) {
-    //Serial.println(String("x = ") + String(p.x));
-    //Serial.println(String("y = ") + String(p.y));
+  if (p.z > ts.pressureThreshhold)
+  {
+    // Serial.println(String("x = ") + String(p.x));
+    // Serial.println(String("y = ") + String(p.y));
     p.x = map(p.x, TS_MAXX, TS_MINX, 0, 240);
     p.y = map(p.y, TS_MAXY, TS_MINY, 0, 320);
     Serial.println(String("x map = ") + String(p.x));
     Serial.println(String("y map = ") + String(p.y));
     Serial.println(String("z = ") + String(p.z));
 
-//pagina di scelta
-if (numPage == 0) {
-  if(p.y>0 && p.y<320 && p.x>0 && p.x<240 && buttonState) {
-    buttonState = false;
+    // pagina di scelta
+    if (numPage == 0)
+    {
+      if (p.y > 0 && p.y < 320 && p.x > 0 && p.x < 240 && buttonState)
+      {
+        buttonState = false;
 
-    pinMode(XM, OUTPUT);
-    pinMode(YP, OUTPUT);
+        pinMode(XM, OUTPUT);
+        pinMode(YP, OUTPUT);
 
-    chose_page();
-  }
-}
+        chose_page();
+      }
+    }
 
-else if (numPage == 1) {
-  if (x == 0) {
-    p.x = 0;
-    p.y = 0;
-    x = 1;
-  }
-  buttonStateP1 = true;
-  if (p.y>30 && p.y<290 && p.x>115 && p.x<145 && buttonStateP1) {
-    buttonStateP1 = false;
-    pinMode(XM, OUTPUT);
-    pinMode(YP, OUTPUT);
+    else if (numPage == 1)
+    {
+      if (x == 0)
+      {
+        p.x = 0;
+        p.y = 0;
+        x = 1;
+      }
+      buttonStateP1 = true;
+      if (p.y > 30 && p.y < 290 && p.x > 115 && p.x < 145 && buttonStateP1)
+      {
+        buttonStateP1 = false;
+        pinMode(XM, OUTPUT);
+        pinMode(YP, OUTPUT);
 
-    numPage = 2;
-    question1();
-  }
-  else if (p.y>30 && p.y<290 && p.x>175 && p.x<215 && buttonStateP1) {
-    buttonStateP1 = false;
-    pinMode(XM, OUTPUT);
-    pinMode(YP, OUTPUT);
+        numPage = 2;
+        question1();
+      }
+      else if (p.y > 30 && p.y < 290 && p.x > 175 && p.x < 215 && buttonStateP1)
+      {
+        buttonStateP1 = false;
+        pinMode(XM, OUTPUT);
+        pinMode(YP, OUTPUT);
 
-    numPage = 17;
-    y = 1;
-    ard_question1_s();
+        numPage = 17;
+        y = 1;
+        ard_question1_s();
+      }
+    }
 
-  }
-}
-
-
-
-//domanda 1
-    if (numPage == 2) {
-      if(p.y>0 && p.y<320 && p.x>0 && p.x<240 && buttonStateP2) {
+    // domanda 1
+    if (numPage == 2)
+    {
+      if (p.y > 0 && p.y < 320 && p.x > 0 && p.x < 240 && buttonStateP2)
+      {
         buttonStateP2 = false;
 
         pinMode(XM, OUTPUT);
@@ -628,26 +889,32 @@ else if (numPage == 1) {
       }
     }
 
-    else if (numPage == 3) {
-      if (x == 0) {
+    else if (numPage == 3)
+    {
+      if (x == 0)
+      {
         p.x = 0;
         p.y = 0;
         x = 1;
       }
       buttonStateP3 = true;
-      if (p.y>30 && p.y<145 && p.x>170 && p.x<210 && buttonStateP3) {
+      if (p.y > 30 && p.y < 145 && p.x > 170 && p.x < 210 && buttonStateP3)
+      {
         buttonStateP3 = false;
         pinMode(XM, OUTPUT);
         pinMode(YP, OUTPUT);
 
         ans_true();
+        ds1 = 1;
       }
-      else if (p.y>175 && p.y<290 && p.x>170 && p.x<210 && buttonStateP3) {
+      else if (p.y > 175 && p.y < 290 && p.x > 170 && p.x < 210 && buttonStateP3)
+      {
         buttonStateP3 = false;
         pinMode(XM, OUTPUT);
         pinMode(YP, OUTPUT);
 
         ans_false();
+        ds1 = 0;
         tft.setCursor(50, 120);
         tft.setTextColor(WHITE);
         tft.setTextSize(2);
@@ -655,29 +922,34 @@ else if (numPage == 1) {
       }
     }
 
-//domanda 2
-    else if (numPage == 4) {
-      if (x == 0) {
+    // domanda 2
+    else if (numPage == 4)
+    {
+      if (x == 0)
+      {
         p.x = 0;
         p.y = 0;
         x = 1;
       }
       buttonStateP4 = true;
-      if (p.y>300 && p.y<320 && p.x>0 && p.x<20) {
+      if (p.y > 300 && p.y < 320 && p.x > 0 && p.x < 20)
+      {
         pinMode(XM, OUTPUT);
         pinMode(YP, OUTPUT);
 
         numPage = 0;
         chose_page();
       }
-      else if (p.y>0 && p.y<20 && p.x>0 && p.x<20) {
+      else if (p.y > 0 && p.y < 20 && p.x > 0 && p.x < 20)
+      {
         pinMode(XM, OUTPUT);
         pinMode(YP, OUTPUT);
 
         numPage = 2;
         question1();
       }
-      else if(p.y>0 && p.y<320 && p.x>0 && p.x<240 && buttonStateP4) {
+      else if (p.y > 0 && p.y < 320 && p.x > 0 && p.x < 240 && buttonStateP4)
+      {
         buttonStateP4 = false;
         pinMode(XM, OUTPUT);
         pinMode(YP, OUTPUT);
@@ -686,51 +958,61 @@ else if (numPage == 1) {
       }
     }
 
-    else if (numPage == 5) {
+    else if (numPage == 5)
+    {
       buttonStateP5 = true;
-      if (p.y>30 && p.y<145 && p.x>170 && p.x<210 && buttonStateP5) {
+      if (p.y > 30 && p.y < 145 && p.x > 170 && p.x < 210 && buttonStateP5)
+      {
         buttonStateP5 = false;
         pinMode(XM, OUTPUT);
         pinMode(YP, OUTPUT);
 
         ans_false();
+        ds2 = 0;
         tft.setCursor(50, 120);
         tft.setTextColor(WHITE);
         tft.setTextSize(2);
         tft.print("Risposta corretta:\n\n       1.4 mln di km");
       }
-      else if (p.y>175 && p.y<290 && p.x>170 && p.x<210 && buttonStateP5) {
+      else if (p.y > 175 && p.y < 290 && p.x > 170 && p.x < 210 && buttonStateP5)
+      {
         buttonStateP5 = false;
         pinMode(XM, OUTPUT);
         pinMode(YP, OUTPUT);
 
         ans_true();
+        ds2 = 1;
       }
     }
 
-//domanda 3
-    else if (numPage == 6) {
-      if (x == 0) {
+    // domanda 3
+    else if (numPage == 6)
+    {
+      if (x == 0)
+      {
         p.x = 0;
         p.y = 0;
         x = 1;
       }
       buttonStateP6 = true;
-      if (p.y>300 && p.y<320 && p.x>0 && p.x<20) {
+      if (p.y > 300 && p.y < 320 && p.x > 0 && p.x < 20)
+      {
         pinMode(XM, OUTPUT);
         pinMode(YP, OUTPUT);
 
         numPage = 0;
         chose_page();
       }
-      else if (p.y>0 && p.y<20 && p.x>0 && p.x<20) {
+      else if (p.y > 0 && p.y < 20 && p.x > 0 && p.x < 20)
+      {
         pinMode(XM, OUTPUT);
         pinMode(YP, OUTPUT);
 
         numPage = 2;
         question1();
       }
-      else if(p.y>0 && p.y<320 && p.x>0 && p.x<240 && buttonStateP6) {
+      else if (p.y > 0 && p.y < 320 && p.x > 0 && p.x < 240 && buttonStateP6)
+      {
         buttonStateP6 = false;
         pinMode(XM, OUTPUT);
         pinMode(YP, OUTPUT);
@@ -739,51 +1021,61 @@ else if (numPage == 1) {
       }
     }
 
-    else if (numPage == 7) {
+    else if (numPage == 7)
+    {
       buttonStateP7 = true;
-      if (p.y>30 && p.y<290 && p.x>115 && p.x<145 && buttonStateP7) {
+      if (p.y > 30 && p.y < 290 && p.x > 115 && p.x < 145 && buttonStateP7)
+      {
         buttonStateP7 = false;
         pinMode(XM, OUTPUT);
         pinMode(YP, OUTPUT);
 
         ans_false();
+        ds3 = 0;
         tft.setCursor(50, 120);
         tft.setTextColor(WHITE);
         tft.setTextSize(2);
         tft.print("Risposta corretta:\n\n    Fascia di asteroidi");
       }
-      else if (p.y>30 && p.y<290 && p.x>175 && p.x<215 && buttonStateP7) {
+      else if (p.y > 30 && p.y < 290 && p.x > 175 && p.x < 215 && buttonStateP7)
+      {
         buttonStateP7 = false;
         pinMode(XM, OUTPUT);
         pinMode(YP, OUTPUT);
 
         ans_true();
+        ds3 = 1;
       }
     }
 
-//domanda 4
-    else if (numPage == 8) {
-      if (x == 0) {
+    // domanda 4
+    else if (numPage == 8)
+    {
+      if (x == 0)
+      {
         p.x = 0;
         p.y = 0;
         x = 1;
       }
       buttonStateP8 = true;
-      if (p.y>300 && p.y<320 && p.x>0 && p.x<20) {
+      if (p.y > 300 && p.y < 320 && p.x > 0 && p.x < 20)
+      {
         pinMode(XM, OUTPUT);
         pinMode(YP, OUTPUT);
 
         numPage = 0;
         chose_page();
       }
-      else if (p.y>0 && p.y<20 && p.x>0 && p.x<20) {
+      else if (p.y > 0 && p.y < 20 && p.x > 0 && p.x < 20)
+      {
         pinMode(XM, OUTPUT);
         pinMode(YP, OUTPUT);
 
         numPage = 2;
         question1();
       }
-      else if(p.y>0 && p.y<320 && p.x>0 && p.x<240 && buttonStateP8) {
+      else if (p.y > 0 && p.y < 320 && p.x > 0 && p.x < 240 && buttonStateP8)
+      {
         buttonStateP8 = false;
         pinMode(XM, OUTPUT);
         pinMode(YP, OUTPUT);
@@ -792,21 +1084,26 @@ else if (numPage == 1) {
       }
     }
 
-    else if (numPage == 9) {
+    else if (numPage == 9)
+    {
       buttonStateP9 = true;
-      if (p.y>30 && p.y<290 && p.x>115 && p.x<145 && buttonStateP9) {
+      if (p.y > 30 && p.y < 290 && p.x > 115 && p.x < 145 && buttonStateP9)
+      {
         buttonStateP9 = false;
         pinMode(XM, OUTPUT);
         pinMode(YP, OUTPUT);
 
         ans_true();
+        ds4 = 1;
       }
-      else if (p.y>30 && p.y<290 && p.x>175 && p.x<215 && buttonStateP9) {
+      else if (p.y > 30 && p.y < 290 && p.x > 175 && p.x < 215 && buttonStateP9)
+      {
         buttonStateP9 = false;
         pinMode(XM, OUTPUT);
         pinMode(YP, OUTPUT);
 
         ans_false();
+        ds4 = 0;
         tft.setCursor(50, 120);
         tft.setTextColor(WHITE);
         tft.setTextSize(2);
@@ -814,29 +1111,34 @@ else if (numPage == 1) {
       }
     }
 
-//domanda 5
-    else if (numPage == 10) {
-      if (x == 0) {
+    // domanda 5
+    else if (numPage == 10)
+    {
+      if (x == 0)
+      {
         p.x = 0;
         p.y = 0;
         x = 1;
       }
       buttonStateP10 = true;
-      if (p.y>300 && p.y<320 && p.x>0 && p.x<20) {
+      if (p.y > 300 && p.y < 320 && p.x > 0 && p.x < 20)
+      {
         pinMode(XM, OUTPUT);
         pinMode(YP, OUTPUT);
 
         numPage = 0;
         chose_page();
       }
-      else if (p.y>0 && p.y<20 && p.x>0 && p.x<20) {
+      else if (p.y > 0 && p.y < 20 && p.x > 0 && p.x < 20)
+      {
         pinMode(XM, OUTPUT);
         pinMode(YP, OUTPUT);
 
         numPage = 2;
         question1();
       }
-      else if(p.y>0 && p.y<320 && p.x>0 && p.x<240 && buttonStateP10) {
+      else if (p.y > 0 && p.y < 320 && p.x > 0 && p.x < 240 && buttonStateP10)
+      {
         buttonStateP10 = false;
         pinMode(XM, OUTPUT);
         pinMode(YP, OUTPUT);
@@ -845,51 +1147,61 @@ else if (numPage == 1) {
       }
     }
 
-    else if (numPage == 11) {
+    else if (numPage == 11)
+    {
       buttonStateP11 = true;
-      if (p.y>30 && p.y<290 && p.x>115 && p.x<145 && buttonStateP11) {
+      if (p.y > 30 && p.y < 290 && p.x > 115 && p.x < 145 && buttonStateP11)
+      {
         buttonStateP11 = false;
         pinMode(XM, OUTPUT);
         pinMode(YP, OUTPUT);
 
         ans_false();
+        ds5 = 0;
         tft.setCursor(50, 120);
         tft.setTextColor(WHITE);
         tft.setTextSize(2);
-        tft.print("Risposta corretta:\n\n       Cecere e Eris");
+        tft.print("Risposta corretta:\n\n       Cerere e Eris");
       }
-      else if (p.y>30 && p.y<290 && p.x>175 && p.x<215 && buttonStateP11) {
+      else if (p.y > 30 && p.y < 290 && p.x > 175 && p.x < 215 && buttonStateP11)
+      {
         buttonStateP11 = false;
         pinMode(XM, OUTPUT);
         pinMode(YP, OUTPUT);
 
         ans_true();
+        ds5 = 1;
       }
     }
 
-//domanda 6
-    else if (numPage == 12) {
-      if (x == 0) {
+    // domanda 6
+    else if (numPage == 12)
+    {
+      if (x == 0)
+      {
         p.x = 0;
         p.y = 0;
         x = 1;
       }
       buttonStateP12 = true;
-      if (p.y>300 && p.y<320 && p.x>0 && p.x<20) {
+      if (p.y > 300 && p.y < 320 && p.x > 0 && p.x < 20)
+      {
         pinMode(XM, OUTPUT);
         pinMode(YP, OUTPUT);
 
         numPage = 0;
         chose_page();
       }
-      else if (p.y>0 && p.y<20 && p.x>0 && p.x<20) {
+      else if (p.y > 0 && p.y < 20 && p.x > 0 && p.x < 20)
+      {
         pinMode(XM, OUTPUT);
         pinMode(YP, OUTPUT);
 
         numPage = 2;
         question1();
       }
-      else if(p.y>0 && p.y<320 && p.x>0 && p.x<240 && buttonStateP12) {
+      else if (p.y > 0 && p.y < 320 && p.x > 0 && p.x < 240 && buttonStateP12)
+      {
         buttonStateP12 = false;
         pinMode(XM, OUTPUT);
         pinMode(YP, OUTPUT);
@@ -898,51 +1210,61 @@ else if (numPage == 1) {
       }
     }
 
-    else if (numPage == 13) {
+    else if (numPage == 13)
+    {
       buttonStateP13 = true;
-      if (p.y>30 && p.y<145 && p.x>170 && p.x<210 && buttonStateP13) {
+      if (p.y > 30 && p.y < 145 && p.x > 170 && p.x < 210 && buttonStateP13)
+      {
         buttonStateP13 = false;
         pinMode(XM, OUTPUT);
         pinMode(YP, OUTPUT);
 
         ans_false();
+        ds6 = 0;
         tft.setCursor(50, 120);
         tft.setTextColor(WHITE);
         tft.setTextSize(2);
         tft.print("Risposta corretta:\n\n        6 missioni");
       }
-      else if (p.y>175 && p.y<290 && p.x>170 && p.x<210 && buttonStateP13) {
+      else if (p.y > 175 && p.y < 290 && p.x > 170 && p.x < 210 && buttonStateP13)
+      {
         buttonStateP13 = false;
         pinMode(XM, OUTPUT);
         pinMode(YP, OUTPUT);
 
         ans_true();
+        ds6 = 1;
       }
     }
 
-//domanda 7
-    else if (numPage == 14) {
-      if (x == 0) {
+    // domanda 7
+    else if (numPage == 14)
+    {
+      if (x == 0)
+      {
         p.x = 0;
         p.y = 0;
         x = 1;
       }
       buttonStateP14 = true;
-      if (p.y>300 && p.y<320 && p.x>0 && p.x<20) {
+      if (p.y > 300 && p.y < 320 && p.x > 0 && p.x < 20)
+      {
         pinMode(XM, OUTPUT);
         pinMode(YP, OUTPUT);
 
         numPage = 0;
         chose_page();
       }
-      else if (p.y>0 && p.y<20 && p.x>0 && p.x<20) {
+      else if (p.y > 0 && p.y < 20 && p.x > 0 && p.x < 20)
+      {
         pinMode(XM, OUTPUT);
         pinMode(YP, OUTPUT);
 
         numPage = 2;
         question1();
       }
-      if(p.y>0 && p.y<320 && p.x>0 && p.x<240 && buttonStateP14) {
+      if (p.y > 0 && p.y < 320 && p.x > 0 && p.x < 240 && buttonStateP14)
+      {
         buttonStateP14 = false;
         pinMode(XM, OUTPUT);
         pinMode(YP, OUTPUT);
@@ -951,21 +1273,26 @@ else if (numPage == 1) {
       }
     }
 
-    else if (numPage == 15) {
+    else if (numPage == 15)
+    {
       buttonStateP15 = true;
-      if (p.y>30 && p.y<145 && p.x>170 && p.x<210 && buttonStateP15) {
+      if (p.y > 30 && p.y < 145 && p.x > 170 && p.x < 210 && buttonStateP15)
+      {
         buttonStateP15 = false;
         pinMode(XM, OUTPUT);
         pinMode(YP, OUTPUT);
 
         ans_true();
+        ds7 = 1;
       }
-      else if (p.y>175 && p.y<290 && p.x>170 && p.x<210 && buttonStateP15) {
+      else if (p.y > 175 && p.y < 290 && p.x > 170 && p.x < 210 && buttonStateP15)
+      {
         buttonStateP15 = false;
         pinMode(XM, OUTPUT);
         pinMode(YP, OUTPUT);
 
         ans_false();
+        ds7 = 0;
         tft.setCursor(50, 120);
         tft.setTextColor(WHITE);
         tft.setTextSize(2);
@@ -973,15 +1300,18 @@ else if (numPage == 1) {
       }
     }
 
-//pagina finale
-    else if (numPage == 16) {
-      if (x == 0) {
+    // pagina finale
+    else if (numPage == 16)
+    {
+      if (x == 0)
+      {
         p.x = 0;
         p.y = 0;
         x = 1;
       }
       buttonStateP16 = true;
-      if(p.y>0 && p.y<320 && p.x>0 && p.x<240 && buttonStateP16) {
+      if (p.y > 0 && p.y < 320 && p.x > 0 && p.x < 240 && buttonStateP16)
+      {
         buttonStateP16 = false;
         pinMode(XM, OUTPUT);
         pinMode(YP, OUTPUT);
@@ -990,13 +1320,12 @@ else if (numPage == 1) {
       }
     }
 
-
-
-
-//domanda 1 Arduino
-    else if (numPage == 17) {
+    // domanda 1 Arduino
+    else if (numPage == 17)
+    {
       buttonStateP17 = true;
-      if (p.y>30 && p.y<290 && p.x>115 && p.x<145 && buttonStateP17) {
+      if (p.y > 30 && p.y < 290 && p.x > 115 && p.x < 145 && buttonStateP17)
+      {
         buttonStateP17 = false;
         pinMode(XM, OUTPUT);
         pinMode(YP, OUTPUT);
@@ -1004,36 +1333,66 @@ else if (numPage == 1) {
         numPage = 2;
         question1();
       }
-      else if (p.y>30 && p.y<290 && p.x>175 && p.x<215 && buttonStateP17) {
+      else if (p.y > 30 && p.y < 290 && p.x > 175 && p.x < 215 && buttonStateP17)
+      {
         buttonStateP17 = false;
         pinMode(XM, OUTPUT);
         pinMode(YP, OUTPUT);
 
-        if (y == 1) {
+        if (y == 1)
+        {
           numPage = numPage + 1;
         }
 
-        if (y == 0) {
+        if (y == 0)
+        {
           ard_question1();
         }
       }
+
+      else if (p.y > 275 && p.y < 298 && p.x > 70 && p.x < 93 && buttonStateP17)
+      {
+        buttonStateP17 = false;
+        pinMode(XM, OUTPUT);
+        pinMode(YP, OUTPUT);
+        results();
+      }
     }
 
-    else if (numPage == 18) {
+    // pagina di riepilo
+    else if (numPage == 25)
+    {
+      buttonStateP25 = true;
+      if (p.y > 5 && p.y < 20 && p.x > 5 && p.x < 30 && buttonStateP25)
+      {
+        buttonStateP25 = false;
+        pinMode(XM, OUTPUT);
+        pinMode(YP, OUTPUT);
+        numPage = 16;
+        final_page();
+      }
+    }
+
+    else if (numPage == 18)
+    {
       buttonStateP18 = true;
-      if (p.y>30 && p.y<290 && p.x>66 && p.x<126 && buttonStateP18) {
+      if (p.y > 30 && p.y < 290 && p.x > 66 && p.x < 126 && buttonStateP18)
+      {
         buttonStateP18 = false;
         pinMode(XM, OUTPUT);
         pinMode(YP, OUTPUT);
 
         ard_ans_true();
+        da1 = 1;
       }
-      else if (p.y>30 && p.y<290 && p.x>152 && p.x<212 && buttonStateP18) {
+      else if (p.y > 30 && p.y < 290 && p.x > 152 && p.x < 212 && buttonStateP18)
+      {
         buttonStateP18 = false;
         pinMode(XM, OUTPUT);
         pinMode(YP, OUTPUT);
 
         ard_ans_false();
+        da1 = 0;
         tft.setCursor(50, 120);
         tft.setTextColor(BLACK);
         tft.setTextSize(2);
@@ -1041,22 +1400,26 @@ else if (numPage == 1) {
       }
     }
 
-//domanda 2 Arduino
-    else if (numPage == 19) {
-      if (x == 0) {
+    // domanda 2 Arduino
+    else if (numPage == 19)
+    {
+      if (x == 0)
+      {
         p.x = 0;
         p.y = 0;
         x = 1;
       }
       buttonStateP19 = true;
-      if (p.y>300 && p.y<320 && p.x>0 && p.x<20) {
+      if (p.y > 300 && p.y < 320 && p.x > 0 && p.x < 20)
+      {
         pinMode(XM, OUTPUT);
         pinMode(YP, OUTPUT);
 
         numPage = 0;
         chose_page();
       }
-      else if (p.y>0 && p.y<20 && p.x>0 && p.x<20) {
+      else if (p.y > 0 && p.y < 20 && p.x > 0 && p.x < 20)
+      {
         pinMode(XM, OUTPUT);
         pinMode(YP, OUTPUT);
 
@@ -1064,7 +1427,8 @@ else if (numPage == 1) {
         y = 0;
         ard_question1();
       }
-      else if(p.y>0 && p.y<320 && p.x>0 && p.x<240 && buttonStateP19) {
+      else if (p.y > 0 && p.y < 320 && p.x > 0 && p.x < 240 && buttonStateP19)
+      {
         buttonStateP19 = false;
         pinMode(XM, OUTPUT);
         pinMode(YP, OUTPUT);
@@ -1073,44 +1437,53 @@ else if (numPage == 1) {
       }
     }
 
-    else if (numPage == 20) {
+    else if (numPage == 20)
+    {
       buttonStateP20 = true;
-      if (p.y>30 && p.y<290 && p.x>115 && p.x<145 && buttonStateP20) {
+      if (p.y > 30 && p.y < 290 && p.x > 115 && p.x < 145 && buttonStateP20)
+      {
         buttonStateP20 = false;
         pinMode(XM, OUTPUT);
         pinMode(YP, OUTPUT);
 
         ard_ans_false();
+        da2 = 0;
         tft.setCursor(50, 120);
         tft.setTextColor(BLACK);
         tft.setTextSize(2);
         tft.print("Risposta corretta:\n\n         Italiano");
       }
-      else if (p.y>30 && p.y<290 && p.x>175 && p.x<215 && buttonStateP20) {
+      else if (p.y > 30 && p.y < 290 && p.x > 175 && p.x < 215 && buttonStateP20)
+      {
         buttonStateP20 = false;
         pinMode(XM, OUTPUT);
         pinMode(YP, OUTPUT);
 
         ard_ans_true();
+        da2 = 1;
       }
     }
 
-//domanda 3 Arduino
-    else if (numPage == 21) {
-      if (x == 0) {
+    // domanda 3 Arduino
+    else if (numPage == 21)
+    {
+      if (x == 0)
+      {
         p.x = 0;
         p.y = 0;
         x = 1;
       }
       buttonStateP21 = true;
-      if (p.y>300 && p.y<320 && p.x>0 && p.x<20) {
+      if (p.y > 300 && p.y < 320 && p.x > 0 && p.x < 20)
+      {
         pinMode(XM, OUTPUT);
         pinMode(YP, OUTPUT);
 
         numPage = 0;
         chose_page();
       }
-      else if (p.y>0 && p.y<20 && p.x>0 && p.x<20) {
+      else if (p.y > 0 && p.y < 20 && p.x > 0 && p.x < 20)
+      {
         pinMode(XM, OUTPUT);
         pinMode(YP, OUTPUT);
 
@@ -1118,7 +1491,8 @@ else if (numPage == 1) {
         y = 0;
         ard_question1();
       }
-      else if(p.y>0 && p.y<320 && p.x>0 && p.x<240 && buttonStateP21) {
+      else if (p.y > 0 && p.y < 320 && p.x > 0 && p.x < 240 && buttonStateP21)
+      {
         buttonStateP21 = false;
         pinMode(XM, OUTPUT);
         pinMode(YP, OUTPUT);
@@ -1127,42 +1501,51 @@ else if (numPage == 1) {
       }
     }
 
-    else if (numPage == 22) {
-      if (x == 0) {
+    else if (numPage == 22)
+    {
+      if (x == 0)
+      {
         p.x = 0;
         p.y = 0;
         x = 1;
       }
       buttonStateP22 = true;
-      if (p.y>30 && p.y<290 && p.x>115 && p.x<145 && buttonStateP22) {
+      if (p.y > 30 && p.y < 290 && p.x > 115 && p.x < 145 && buttonStateP22)
+      {
         buttonStateP22 = false;
         pinMode(XM, OUTPUT);
         pinMode(YP, OUTPUT);
 
         ard_ans_false();
+        da3 = 0;
         tft.setCursor(50, 120);
         tft.setTextColor(BLACK);
         tft.setTextSize(2);
         tft.print("Risposta corretta:\n\n        Open Source");
       }
-      else if (p.y>30 && p.y<290 && p.x>175 && p.x<215 && buttonStateP22) {
+      else if (p.y > 30 && p.y < 290 && p.x > 175 && p.x < 215 && buttonStateP22)
+      {
         buttonStateP22 = false;
         pinMode(XM, OUTPUT);
         pinMode(YP, OUTPUT);
 
         ard_ans_true();
+        da3 = 1;
       }
     }
 
-//pagina finale Arduino
-    else if (numPage == 23) {
-      if (x == 0) {
+    // pagina finale Arduino
+    else if (numPage == 23)
+    {
+      if (x == 0)
+      {
         p.x = 0;
         p.y = 0;
         x = 1;
       }
       buttonStateP23 = true;
-      if(p.y>0 && p.y<320 && p.x>0 && p.x<240 && buttonStateP23) {
+      if (p.y > 0 && p.y < 320 && p.x > 0 && p.x < 240 && buttonStateP23)
+      {
         buttonStateP23 = false;
         pinMode(XM, OUTPUT);
         pinMode(YP, OUTPUT);
@@ -1171,14 +1554,17 @@ else if (numPage == 1) {
       }
     }
 
-    else if (numPage == 24) {
-      if (x == 0) {
+    else if (numPage == 24)
+    {
+      if (x == 0)
+      {
         p.x = 0;
         p.y = 0;
         x = 1;
       }
       buttonStateP24 = true;
-      if (p.y>30 && p.y<290 && p.x>115 && p.x<145 && buttonStateP24) {
+      if (p.y > 30 && p.y < 290 && p.x > 115 && p.x < 145 && buttonStateP24)
+      {
         buttonStateP24 = false;
         pinMode(XM, OUTPUT);
         pinMode(YP, OUTPUT);
@@ -1186,7 +1572,8 @@ else if (numPage == 1) {
         numPage = 17;
         ard_question1();
       }
-      else if (p.y>30 && p.y<290 && p.x>175 && p.x<215 && buttonStateP24) {
+      else if (p.y > 30 && p.y < 290 && p.x > 175 && p.x < 215 && buttonStateP24)
+      {
         buttonStateP24 = false;
         pinMode(XM, OUTPUT);
         pinMode(YP, OUTPUT);
@@ -1194,13 +1581,34 @@ else if (numPage == 1) {
         numPage = 2;
         question1();
       }
+      else if (p.y > 275 && p.y < 298 && p.x > 70 && p.x < 93 && buttonStateP24)
+      {
+        buttonStateP24 = false;
+        pinMode(XM, OUTPUT);
+        pinMode(YP, OUTPUT);
+        ard_results();
+      }
     }
 
+    // pagina di riepilo Arduino
+    else if (numPage == 26)
+    {
+      buttonStateP26 = true;
+      if (p.y > 5 && p.y < 20 && p.x > 5 && p.x < 30 && buttonStateP26)
+      {
+        buttonStateP26 = false;
+        pinMode(XM, OUTPUT);
+        pinMode(YP, OUTPUT);
+        numPage = 23;
+        ard_final_page();
+      }
+    }
 
-
-//funzioni nascoste
-    if (z == 1) {
-      if (p.y>300 && p.y<320 && p.x>0 && p.x<20) {
+    // funzioni nascoste
+    if (z == 1)
+    {
+      if (p.y > 300 && p.y < 320 && p.x > 0 && p.x < 20)
+      {
         pinMode(XM, OUTPUT);
         pinMode(YP, OUTPUT);
 
@@ -1209,16 +1617,20 @@ else if (numPage == 1) {
       }
     }
 
-    if (a == 1) {
-      if (p.y>0 && p.y<20 && p.x>0 && p.x<20) {
-        if (b == 0) {
+    if (a == 1)
+    {
+      if (p.y > 0 && p.y < 20 && p.x > 0 && p.x < 20)
+      {
+        if (b == 0)
+        {
           pinMode(XM, OUTPUT);
           pinMode(YP, OUTPUT);
 
           numPage = 2;
           question1();
         }
-        else if (b == 1) {
+        else if (b == 1)
+        {
           pinMode(XM, OUTPUT);
           pinMode(YP, OUTPUT);
 
@@ -1227,9 +1639,6 @@ else if (numPage == 1) {
           ard_question1();
         }
       }
-
     }
-
-
   }
 }
